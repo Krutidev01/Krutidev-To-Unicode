@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The definitive technical standard for Kruti Dev to Unicode migration. Essential documentation for Hindi developers, typists, and government exam aspirants.">
+    <title>Kruti Dev Protocol | The Modern Standard</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-body: #050507;
+            --bg-card: #0f1014;
+            --bg-card-hover: #16181d;
+            --border-color: rgba(255, 255, 255, 0.06);
+            --primary: #6366f1; /* Indigo */
+            --accent: #a855f7;  /* Purple */
+            --text-main: #ffffff;
+            --text-muted: #9ca3af;
+            --gradient-main: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --glow: 0 0 80px -20px rgba(99, 102, 241, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Ambient Background --- */
+        .ambient-light {
+            position: fixed;
+            top: -20%;
+            left: 20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
+            filter: blur(80px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(5, 5, 7, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span { background: var(--gradient-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .btn-primary {
+            background: var(--gradient-main);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 180px 24px 100px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .pill i { color: var(--accent); }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #fff, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- Bento Grid Layout --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 80px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+        }
+
+        .card-large { grid-column: span 2; }
+        .card-tall { grid-row: span 2; }
+
+        .card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+        
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* --- Content Section --- */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto 100px;
+        }
+
+        .article-block { margin-bottom: 60px; }
+
+        .article-block h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 24px;
+            color: #fff;
+            position: relative;
+            display: inline-block;
+        }
+
+        .article-block p { margin-bottom: 16px; color: var(--text-muted); font-size: 1.05rem; }
+
+        .highlight-box {
+            background: linear-gradient(180deg, rgba(99, 102, 241, 0.05) 0%, rgba(99, 102, 241, 0) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            padding: 24px;
+            border-radius: 16px;
+            margin: 32px 0;
+        }
+
+        a.text-link {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+            transition: all 0.2s;
+        }
+        
+        a.text-link:hover { color: #fff; border-color: #fff; }
+
+        /* --- Data Table --- */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 0.95rem;
+        }
+
+        .tech-table th {
+            text-align: left;
+            padding: 16px;
+            color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(255,255,255,0.02);
+        }
+
+        .tech-table td {
+            padding: 16px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+            font-family: monospace;
+        }
+
+        .tech-table tr:last-child td { border-bottom: none; }
+
+        /* --- Footer --- */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 80px 0;
+            background: #020203;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright { color: var(--text-muted); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .card-large, .card-tall { grid-column: span 1; grid-row: span 1; }
+            .footer-content { flex-direction: column; gap: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-light"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">KD<span>PROTOCOL</span></a>
+            <a href="https://krutidev-to-unicode.com/" class="btn-primary">
+                Open Converter <i class="fa-solid fa-arrow-right" style="margin-left: 8px; font-size: 0.8em;"></i>
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="pill">
+            <i class="fa-solid fa-bolt"></i> Updated for 2026 Unicode Standards
+        </div>
+        <h1 class="gradient-text">The Architecture of<br>Hindi Typography</h1>
+        <p>Bridging the gap between legacy Remington typing and the modern web. The ultimate technical resource for typists and developers.</p>
+        <div style="display: flex; gap: 16px; justify-content: center;">
+            <a href="https://krutidev-to-unicode.com/" class="btn-primary">Launch Tool</a>
+            <a href="#docs" style="padding: 10px 24px; color: var(--text-muted); text-decoration: none; font-weight: 500;">Read Docs</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="bento-grid">
+            <div class="card card-large">
+                <div class="icon-box"><i class="fa-solid fa-language"></i></div>
+                <h3>Why Unicode Matters</h3>
+                <p>Legacy fonts like Kruti Dev are invisible to Google. Unicode (Mangal) allows your content to be indexed, translated, and voice-searched. It is the only standard accepted by the Government of India for official digital communication.</p>
+            </div>
+            <div class="card">
+                <div class="icon-box"><i class="fa-solid fa-mobile-screen"></i></div>
+                <h3>100% Mobile Ready</h3>
+                <p>Unicode text renders perfectly on iPhone, Android, and Windows without installing any external font files.</p>
+            </div>
+            <div class="card">
+                <div class="icon-box"><i class="fa-solid fa-keyboard"></i></div>
+                <h3>Remington Support</h3>
+                <p>Type using the classic typewriter layout you already know, but generate modern web-safe output.</p>
+            </div>
+            <div class="card card-large">
+                <div class="icon-box"><i class="fa-brands fa-google"></i></div>
+                <h3>SEO & Discovery</h3>
+                <p>Search engines cannot read Kruti Dev. They see it as garbage ASCII text. Converting your blog or website to Unicode instantly unlocks access to 600 Million Hindi internet users.</p>
+            </div>
+        </div>
+
+        <div class="content-wrapper" id="docs">
+            
+            <article class="article-block">
+                <h2>The Technical Shift</h2>
+                <p>For decades, the Indian administrative ecosystem relied on <strong>Kruti Dev</strong>. It was a clever workaround for the pre-internet era, mapping Hindi glyphs to English keys. However, this creates "Dead Data"—information that cannot be processed by modern AI or databases.</p>
+                <p>The solution is <a href="https://krutidev-to-unicode.com/" class="text-link">Kruti Dev to Unicode Conversion</a>. This process involves a complex algorithmic translation that reorders "Matras" (vowels) and joins split characters into single semantic units.</p>
+                
+                <div class="highlight-box">
+                    <h4 style="color: #fff; margin-bottom: 10px;"><i class="fa-solid fa-triangle-exclamation" style="color: var(--accent); margin-right: 10px;"></i>Photoshop & Design Tip</h4>
+                    <p style="margin-bottom: 0;">If you are pasting converted text into Adobe Photoshop and the vowels look broken, change your text engine settings: <strong>Edit > Preferences > Type > World Ready Layout</strong>.</p>
+                </div>
+            </article>
+
+            <article class="article-block">
+                <h2>Keyboard Layout Comparison</h2>
+                <p>Understanding the difference between the legacy and modern layouts is crucial for government exam aspirants (SSC/CPCT).</p>
+                
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Kruti Dev (Legacy)</th>
+                            <th>Unicode (Mangal)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Encoding</td>
+                            <td>8-bit ASCII (Non-standard)</td>
+                            <td>16-bit Unicode (Universal)</td>
+                        </tr>
+                        <tr>
+                            <td>Typing Test</td>
+                            <td>Used in old State Exams</td>
+                            <td>Used in SSC & Central Govt</td>
+                        </tr>
+                        <tr>
+                            <td>Browser Support</td>
+                            <td>Requires Font Installation</td>
+                            <td>Native Support (No install)</td>
+                        </tr>
+                        <tr>
+                            <td>Searchability</td>
+                            <td>0% (Unreadable)</td>
+                            <td>100% (SEO Friendly)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+            <article class="article-block">
+                <h2>Master Alt Codes (Legacy Support)</h2>
+                <p>For those maintaining old records, these Alt Codes are essential for typing complex conjuncts in Kruti Dev 010.</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div style="background: var(--bg-card); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);">
+                        <strong style="display:block; color:var(--primary); margin-bottom:10px;">Standard Symbols</strong>
+                        <ul style="list-style: none; color: var(--text-muted);">
+                            <li style="margin-bottom: 8px;">Alt + 0188 = ( bracket</li>
+                            <li style="margin-bottom: 8px;">Alt + 0189 = ) bracket</li>
+                            <li style="margin-bottom: 8px;">Alt + 0161 = Chandrabindu</li>
+                        </ul>
+                    </div>
+                    <div style="background: var(--bg-card); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);">
+                        <strong style="display:block; color:var(--primary); margin-bottom:10px;">Complex Ligatures</strong>
+                        <ul style="list-style: none; color: var(--text-muted);">
+                            <li style="margin-bottom: 8px;">Alt + 0216 = Kra (क्र)</li>
+                            <li style="margin-bottom: 8px;">Alt + 0221 = Pha (फ)</li>
+                            <li style="margin-bottom: 8px;">Alt + 0170 = Tta (ट्ट)</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">KD<span>PROTOCOL</span></div>
+            <div class="copyright">
+                &copy; 2026 KrutiDev Protocol. Maintained by Open Source. <br>
+                <span style="opacity: 0.6;">Powered by GitHub Pages.</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
